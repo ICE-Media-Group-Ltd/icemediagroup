@@ -46,8 +46,20 @@
 <main id="main">
 
 <section class="section bg-navy on-dark page-hero"><div class="wrap"><nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><span aria-current="page">About us</span></li></ol></nav>
-  <div class="page-hero-grid"><div><p class="kicker light">About us</p><h1 class="h-page">A marketing agency built on measurable results.</h1><p class="lead">ICE Media Group is an online marketing agency and AI training provider based in Dartford, Kent. We work with service businesses across Kent, London and the South East.</p></div>
-  <figure class="media"><img src="assets/images/about-team.jpg" alt="ICE Media Group marketing team planning a campaign" width="1200" height="900" fetchpriority="high" decoding="async" data-fallback></figure></div>
+  <div class="page-hero-grid" style="align-items:start"><div><p class="kicker light">About us</p><h1 class="h-page">A marketing agency built on measurable results.</h1><p class="lead">ICE Media Group is an online marketing agency and AI training provider based in Dartford, Kent. We work with service businesses across Kent, London and the South East.</p></div>
+  <form class="form hero-form" data-contact-form novalidate="" aria-labelledby="hf-title">
+  <div class="form-fields" style="display:flex;flex-direction:column;gap:14px">
+    <div><h2 id="hf-title" style="font-size:24px">Get a free audit</h2><p style="font-size:14px;margin-top:6px">We reply within one working day.</p></div>
+    <input type="hidden" name="interest" value="Marketing">
+    <div class="field"><label for="hf-name">Name</label><input class="input" id="hf-name" name="name" autocomplete="name" required></div>
+    <div class="field"><label for="hf-email">Work email</label><input class="input" id="hf-email" name="email" type="email" autocomplete="email" required></div>
+    <div class="field"><label for="hf-phone">Phone (optional)</label><input class="input" id="hf-phone" name="phone" type="tel" autocomplete="tel"></div>
+    <div class="field"><label for="hf-site">Website</label><input class="input" id="hf-site" name="website" placeholder="www.yourbusiness.co.uk" autocomplete="url"></div>
+    <button type="submit" class="btn btn-primary" style="width:100%">Request my free audit <span aria-hidden="true">→</span></button>
+    <p class="form-note">See our <a href="privacy-policy.html">privacy policy</a>.</p>
+  </div>
+  <div class="form-done"><h2 style="font-size:24px">Thank you. We have your request.</h2><p style="margin-top:8px">We will reply within one working day.</p></div>
+</form></div>
 </div></section>
 <section class="section bg-grey"><div class="wrap split" style="padding-top:48px;padding-bottom:48px;align-items:start"><p class="eyebrow">Proven results</p><p class="span2" style="font-size:22px;line-height:1.4;color:var(--navy)">Over <strong style="font-weight:900">£50 million</strong> in sales has been generated through websites and marketing strategies created by our team. Every service we offer is built on that experience.</p></div></section>
 <section class="section"><div class="wrap split"><div><p class="eyebrow">What we do</p><h2 class="h-sub">Two services. One team.</h2></div><div class="span2 stack">
