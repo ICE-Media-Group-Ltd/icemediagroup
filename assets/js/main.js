@@ -46,27 +46,25 @@
     form.classList.add('sent');
   });
 
-  // Cookie consent. Set window.ICE_GA_ID (e.g. 'G-XXXXXXX') to enable analytics after consent.
+  // Cookie consent. GTM (GTM-PCHKLG8S) loads on every page with Consent Mode v2 defaults set to denied.
   var KEY = 'ice_cookie_consent';
   var banner = document.querySelector('.cookie');
+  window.dataLayer = window.dataLayer || [];
+  function gtagC() { window.dataLayer.push(arguments); }
   function loadAnalytics() {
-    if (!window.ICE_GA_ID || window.__iceGa) return;
-    window.__iceGa = true;
-    var s = document.createElement('script');
-    s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.ICE_GA_ID;
-    document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { dataLayer.push(arguments); };
-    gtag('js', new Date()); gtag('config', window.ICE_GA_ID, { anonymize_ip: true });
+    gtagC('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' });
+    window.dataLayer.push({ event: 'cookie_consent_accepted' });
+  }
+  function denyAnalytics() {
+    gtagC('consent', 'update', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
   }
   var choice = null;
   try { choice = localStorage.getItem(KEY); } catch (e) {}
-  if (choice === 'accepted') loadAnalytics();
-  if (!choice && banner) banner.classList.add('show');
+    if (!choice && banner) banner.classList.add('show');
   function set(v) {
     try { localStorage.setItem(KEY, v); } catch (e) {}
     if (banner) banner.classList.remove('show');
-    if (v === 'accepted') loadAnalytics();
+    if (v === 'accepted') loadAnalytics(); else denyAnalytics();
   }
   document.querySelectorAll('[data-cookie]').forEach(function (b) {
     b.addEventListener('click', function () { set(b.dataset.cookie); });
