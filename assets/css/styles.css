@@ -44,13 +44,13 @@ a:hover{color:var(--accent)}
 
 /* header + nav */
 .site-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:var(--rule) solid var(--navy)}
-.nav-bar{position:relative;display:flex;align-items:stretch;gap:40px;height:72px}
+.nav-bar{position:relative;display:flex;align-items:stretch;gap:32px;height:88px}
 .nav-bar>.brand,.nav-bar>.nav-toggle{align-self:center}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy);flex:none}
-.brand-word{display:flex;align-items:center;gap:8px}
-.brand-ice{font-weight:900;font-size:26px;line-height:.8}
-.brand-bar{width:2px;height:22px;background:var(--accent)}
-.brand-sub{font-weight:700;font-size:10px;line-height:1.05;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.brand-word{display:flex;align-items:center;gap:12px}
+.brand-ice{font-weight:900;font-size:42px;line-height:.8}
+.brand-bar{width:3px;height:36px;background:var(--accent)}
+.brand-sub{font-weight:700;font-size:13px;line-height:1.05;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
 .nav-primary{flex:1;display:flex;align-items:stretch;justify-content:flex-end;gap:24px}
 .nav-list{display:flex;align-items:stretch;gap:28px;list-style:none;margin:0;padding:0}
 .nav-item{display:flex;align-items:stretch}
@@ -79,7 +79,7 @@ a:hover{color:var(--accent)}
 .sub a.sub-all:hover{background:var(--accent);color:var(--navy)}
 .nav-toggle{display:none;margin-left:auto;background:none;border:var(--rule) solid var(--navy);width:44px;height:44px;align-items:center;justify-content:center;color:var(--navy);cursor:pointer}
 @media (max-width:1060px){
-  .nav-bar{flex-wrap:wrap;gap:0;height:auto;min-height:72px}
+  .nav-bar{flex-wrap:wrap;gap:0;height:auto;min-height:80px}
   .nav-cta{border-left:0;padding-left:0;margin-left:0}
   .nav-cta .btn{width:100%}
   .nav-link{white-space:normal;border:0}
