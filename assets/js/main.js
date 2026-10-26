@@ -34,7 +34,8 @@
     });
   });
 
-  // Contact form: sends enquiries to Formspree, falling back to a normal form post if the request fails
+  // Contact form: sends enquiries to Formspree, then shows the site's own thank-you page
+  var thankYou = new URL('../../thank-you.html', document.currentScript.src).href;
   document.querySelectorAll('[data-contact-form]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -47,11 +48,15 @@
       fetch(form.action, { method: 'POST', body: d, headers: { Accept: 'application/json' } })
         .then(function (r) {
           if (!r.ok) throw new Error('Send failed');
-          form.classList.add('sent');
+          var go = function () { window.location.href = thankYou; };
           window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: 'contact_form_submit', interest: d.get('interest') });
+          window.dataLayer.push({ event: 'contact_form_submit', interest: d.get('interest'), eventCallback: go, eventTimeout: 1500 });
+          setTimeout(go, 1600);
         })
-        .catch(function () { btn.disabled = false; form.submit(); });
+        .catch(function () {
+          btn.disabled = false;
+          alert('Sorry, your enquiry could not be sent. Please try again or call us on 01233 221316.');
+        });
     });
   });
 
