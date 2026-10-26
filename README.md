@@ -6,7 +6,7 @@ Static HTML website. No build step. Upload the contents of this folder to the ro
 
 1. Add images to `assets/images/` (see IMAGES.md).
 2. If your domain is not https://www.icemediagroup.co.uk, find and replace it across all files (canonical tags, sitemap.xml, robots.txt, structured data).
-3. Contact form: it currently opens the visitor's email app. To receive submissions directly, add an `action` URL from a form service (for example Formspree or Netlify Forms) to the form in `contact-us.html`.
+3. Contact forms: every enquiry form posts to Formspree (`https://formspree.io/f/xwllllrz`). Submissions are tracked in the Formspree dashboard.
 4. Analytics: add `<script>window.ICE_GA_ID='G-XXXXXXX'</script>` before `main.js` on each page. It loads only after cookie consent.
 5. Submit `https://www.icemediagroup.co.uk/sitemap.xml` in Google Search Console.
 

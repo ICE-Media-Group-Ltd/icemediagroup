@@ -34,16 +34,25 @@
     });
   });
 
-  // Contact form: opens the visitor's email client until a form handler is connected
-  var form = document.querySelector('[data-contact-form]');
-  if (form) form.addEventListener('submit', function (e) {
-    if (form.getAttribute('action')) return;
-    e.preventDefault();
-    var d = new FormData(form);
-    var body = 'Name: ' + d.get('name') + '\nEmail: ' + d.get('email') + '\nPhone: ' + (d.get('phone') || '') +
-      '\nInterested in: ' + d.get('interest') + '\nWebsite: ' + (d.get('website') || '') + '\n\n' + (d.get('message') || '');
-    window.location.href = 'mailto:contactus@icemediagroup.co.uk?subject=' + encodeURIComponent('Website enquiry: ' + d.get('interest')) + '&body=' + encodeURIComponent(body);
-    form.classList.add('sent');
+  // Contact form: sends enquiries to Formspree, falling back to a normal form post if the request fails
+  document.querySelectorAll('[data-contact-form]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      var d = new FormData(form);
+      d.append('_subject', 'Website enquiry: ' + d.get('interest'));
+      d.append('page', window.location.href);
+      var btn = form.querySelector('[type="submit"]');
+      btn.disabled = true;
+      fetch(form.action, { method: 'POST', body: d, headers: { Accept: 'application/json' } })
+        .then(function (r) {
+          if (!r.ok) throw new Error('Send failed');
+          form.classList.add('sent');
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'contact_form_submit', interest: d.get('interest') });
+        })
+        .catch(function () { btn.disabled = false; form.submit(); });
+    });
   });
 
   // Cookie consent. GTM (GTM-PCHKLG8S) loads on every page with Consent Mode v2 defaults set to denied.
